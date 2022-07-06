@@ -1,23 +1,17 @@
 import React from "react";
 import "./App.css";
-import Main from "./components/Main/Main";
-import GymProgram from "./components/GymProgram/GymProgram";
-import Member from "./components/Member/Member";
-import Classes from "./components/OurClasses/Classes";
-import Schedule from "./components/Schedule/Schedule";
-import Trainers from "./components/Trainers/Trainers";
-import Contact from './components/Contact/Contact';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Start from "./Start";
+import Login from "./components/login";
 
 const App = () => (
-  <div className="App">
-    <Main />
-    <GymProgram />
-    <Member />
-    <Classes />
-    <Schedule />
-    <Trainers />
-    <Contact />
-  </div>
+ 
+  <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Start/>}/>       
+        <Route path="/Login" element={<Login />} />        
+      </Routes>
+    </BrowserRouter>
 );
 
 export default App;

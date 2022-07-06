@@ -1,22 +1,20 @@
-/** @jsx jsx */
+import React from 'react'
 import { jsx, css } from "@emotion/core";
-import React from "react";
 import Link from "./Link";
-import Button from "../GlobalComponents/Button";
+// import Button from "../GlobalComponents/Button";
+import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
 
-const LinksContainer = ({ hidden }) => {
-  return (
-    <div css={styles} className={(hidden ? "hidden" : "") + " linksContainer"}>
-      <Link name="HOME" linkTo="#home" />
-      <Link name="ABOUT" linkTo="#trainers" />
-      <Link name="CLASSES" linkTo="#ourClasses" />
-      <Link name="SCHEDULES" linkTo="#schedule" />
-      <Link name="CONTACT" linkTo="#contact" />
-      <Button text="SIGN UP" />
-    </div>
-  );
-};
+const Button=styled.button`
+background-color: Transparent;
+background-repeat:no-repeat;
+font-size: 13px;
+font-weight: 400;
+color: #fff;
+border:none ;
+text-decoration: none;
 
+`;
 const styles = css`
   width: 100%;
   max-width: 620px;
@@ -44,7 +42,28 @@ const styles = css`
       text-align: center;
       padding: 16px;
     }
-  }
+  
+}`;
+
+const MainContainer=styled.div`
+width: 70%;
+    display: flex;
+    justify-content: space-evenly;
 `;
 
-export default LinksContainer;
+function LinksContainer() {
+  const navigate = useNavigate();
+  return (
+    <MainContainer >
+      <Link name="HOME" linkTo="#home" />
+      <Link name="ABOUT" linkTo="#trainers" />
+      <Link name="CLASSES" linkTo="#ourClasses" />
+      <Link name="SCHEDULES" linkTo="#schedule" />
+      <Link name="CONTACT" linkTo="#contact" />
+      <Button name="Login" onClick={() => {navigate("/login")}}>Login</Button>
+    </MainContainer>
+  );
+
+  }
+
+export default LinksContainer
